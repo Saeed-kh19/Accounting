@@ -41,10 +41,5 @@ namespace Accounting.App
                 }
             }
         }
-
-        private void frmForgotPasswords_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

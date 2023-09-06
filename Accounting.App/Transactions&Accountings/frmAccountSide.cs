@@ -58,13 +58,22 @@ namespace Accounting.App
             {
                 using (UnitOfWork db = new UnitOfWork())
                 {
-                    string name = dgPersons.CurrentRow.Cells[1].Value.ToString();
-                    if (MessageBox.Show($"Are you sure you want to delete '{name}'?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                    int personId = int.Parse(dgPersons.CurrentRow.Cells[0].Value.ToString());
+                    bool isTransactionExist = db.TransactionRepository.GetAllTransactions().Where(t => t.PersonID == personId).Any();
+                    if (!isTransactionExist)
                     {
-                        int PersonId = int.Parse(dgPersons.CurrentRow.Cells[0].Value.ToString());
-                        db.AccountingRepository.DeletePerson(PersonId);
-                        db.Save();
-                        BindGrid();
+                        string name = dgPersons.CurrentRow.Cells[1].Value.ToString();
+                        if (MessageBox.Show($"Are you sure you want to delete '{name}'?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                        {
+                            int PersonId = int.Parse(dgPersons.CurrentRow.Cells[0].Value.ToString());
+                            db.AccountingRepository.DeletePerson(PersonId);
+                            db.Save();
+                            BindGrid();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Cannot delete this person , because you have some transactions with them!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
