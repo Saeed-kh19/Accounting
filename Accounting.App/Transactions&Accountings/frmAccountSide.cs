@@ -60,20 +60,32 @@ namespace Accounting.App
                 {
                     int personId = int.Parse(dgPersons.CurrentRow.Cells[0].Value.ToString());
                     bool isTransactionExist = db.TransactionRepository.GetAllTransactions().Where(t => t.PersonID == personId).Any();
+                    string name = dgPersons.CurrentRow.Cells[1].Value.ToString();
                     if (!isTransactionExist)
                     {
-                        string name = dgPersons.CurrentRow.Cells[1].Value.ToString();
                         if (MessageBox.Show($"Are you sure you want to delete '{name}'?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                         {
-                            int PersonId = int.Parse(dgPersons.CurrentRow.Cells[0].Value.ToString());
-                            db.AccountingRepository.DeletePerson(PersonId);
+                            db.AccountingRepository.DeletePerson(personId);
                             db.Save();
                             BindGrid();
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Cannot delete this person , because you have some transactions with them!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        if (MessageBox.Show($"You have some transactions with '{name}'. If you delete , all of the transactions will be deleted! Are you sure you want to delete this person?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                        {
+                            List<int> transactionIds = db.TransactionRepository.GetAllTransactionIdsByPersonId(personId);
+                            foreach (var transactionId in transactionIds)
+                            {
+                                Transactions transaction = db.TransactionRepository.GetTransactionsById(transactionId);
+                                int PersonId = int.Parse(dgPersons.CurrentRow.Cells[0].Value.ToString());
+                                db.TransactionsGenericRepository.Delete(transaction);
+                                db.Save();
+                            }
+                            db.AccountingRepository.DeletePerson(personId);
+                            db.Save();
+                            BindGrid();
+                        }
                     }
                 }
             }

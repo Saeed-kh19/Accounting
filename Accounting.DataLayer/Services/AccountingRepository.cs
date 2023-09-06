@@ -231,5 +231,10 @@ namespace Accounting.DataLayer.Services
                 return false;
             }
         }
+
+        public List<int> GetAllTransactionIdsByPersonId(int personId)
+        {
+            return db.Transactions.Where(t => t.PersonID == personId).Select(t => t.TransactionID).ToList();
+        }
     }
 }

@@ -14,6 +14,7 @@ namespace Accounting.DataLayer
         List<AccountPersons> GetAllPersons();
         List<ListPersonsViewModel> GetAllPersonsNames(string filter);
         List<Transactions> GetAllTransactions();
+        List<int> GetAllTransactionIdsByPersonId(int personId);
         List<SettingsViewModel> GetAllUsersNames();
         List<Transactions> GetIncomeTransactions();
         List<Transactions> GetOutcomeTransactions();
