@@ -84,14 +84,22 @@ namespace Accounting.App
             {
                 if (txtUsername.Text != "")
                 {
-                    int user = db.LoginGenericRepository.Get(t => t.Username == txtUsername.Text).Select(t => t.UserID).ToList().First();
-                    frmForgotPasswords frmForgotPasswords = new frmForgotPasswords();
-                    frmForgotPasswords.userId = user;
-                    frmForgotPasswords.Show();
+                    bool isExist = db.LoginGenericRepository.Get(t => t.Username == txtUsername.Text).Select(t => t.UserID).ToList().Any();
+                    if (isExist == true)
+                    {
+                        int user = db.LoginGenericRepository.Get(t => t.Username == txtUsername.Text).Select(t => t.UserID).ToList().FirstOrDefault();
+                        frmForgotPasswords frmForgotPasswords = new frmForgotPasswords();
+                        frmForgotPasswords.userId = user;
+                        frmForgotPasswords.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please enter your username correctly", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Please enter your username correctly","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    MessageBox.Show("Please enter your username correctly", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
             }

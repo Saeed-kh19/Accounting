@@ -130,23 +130,23 @@
             // lblSpaceBetween
             // 
             this.lblSpaceBetween.Name = "lblSpaceBetween";
-            this.lblSpaceBetween.Size = new System.Drawing.Size(436, 22);
+            this.lblSpaceBetween.Size = new System.Drawing.Size(420, 22);
             this.lblSpaceBetween.Text = "                                                                                 " +
-    "                          ";
+    "                      ";
             // 
             // lblDay
             // 
             this.lblDay.ActiveLinkColor = System.Drawing.Color.Red;
             this.lblDay.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.lblDay.Name = "lblDay";
-            this.lblDay.Size = new System.Drawing.Size(59, 22);
-            this.lblDay.Text = "Saturday";
+            this.lblDay.Size = new System.Drawing.Size(75, 22);
+            this.lblDay.Text = "Wednesday";
             // 
             // lblTime
             // 
             this.lblTime.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(62, 17);
+            this.lblTime.Size = new System.Drawing.Size(62, 22);
             this.lblTime.Text = "12:34 PM";
             // 
             // groupBox1
