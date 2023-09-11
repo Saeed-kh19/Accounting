@@ -217,7 +217,7 @@
             this.MaximizeBox = false;
             this.Name = "frmAboutUs";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "frmAboutUs";
+            this.Text = "About us";
             this.Load += new System.EventHandler(this.frmAboutUs_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

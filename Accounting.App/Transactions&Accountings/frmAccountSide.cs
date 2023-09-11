@@ -121,5 +121,12 @@ namespace Accounting.App
                 dgPersons.DataSource = db.AccountingRepository.PersonFilter(txtSearch.Text);
             }
         }
+
+        private void btnSettings_Click(object sender, EventArgs e)
+        {
+            frmAccessDenied frmAccessDenied = new frmAccessDenied();
+            frmAccessDenied.userId = userId;
+            frmAccessDenied.Show();
+        }
     }
 }
