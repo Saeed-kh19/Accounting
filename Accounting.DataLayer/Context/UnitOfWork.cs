@@ -9,13 +9,20 @@ namespace Accounting.DataLayer.Context
 {
     public class UnitOfWork : IDisposable
     {
+        //IDisposable imports dispose
+        //unit of work is a model for dependecy injection
+
+
+        //context
         Accounting_DBEntities db = new Accounting_DBEntities();
 
         private IAccountingRepository _usersRepository;
+
         public IAccountingRepository UsersRepository
         {
             get
             {
+                //if repository not created , create and if its not created create a new one!
                 if (_usersRepository == null)
                 {
                     _usersRepository = new AccountingRepository(db);
@@ -89,6 +96,7 @@ namespace Accounting.DataLayer.Context
             }
         }
 
+        //clear memroy dedicated to context
         public void Dispose()
         {
             db.Dispose();

@@ -69,6 +69,7 @@ namespace Accounting.App
             this.txtEmailAddress.AutoSize = false;
             this.txtAddress.AutoSize = false;
 
+            //checks whether we are in edit mode or add mode
             if (personId == 0)
             {
                 this.Text = "Add new person";

@@ -38,6 +38,7 @@ namespace Accounting.App
             }
         }
 
+        //for refreshing tables!
         public void BindGrid()
         {
             using (UnitOfWork db = new UnitOfWork())
@@ -62,7 +63,7 @@ namespace Accounting.App
                     bool isTransactionExist = db.TransactionRepository.GetAllTransactions().Where(t => t.PersonID == personId).Any();
                     string name = dgPersons.CurrentRow.Cells[1].Value.ToString();
                     if (!isTransactionExist)
-                    {
+                    {   
                         if (MessageBox.Show($"Are you sure you want to delete '{name}'?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                         {
                             db.AccountingRepository.DeletePerson(personId);

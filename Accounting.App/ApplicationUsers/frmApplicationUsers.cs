@@ -23,7 +23,10 @@ namespace Accounting.App
         {
             using (UnitOfWork db = new UnitOfWork())
             {
+                //for generating only our target columns!
                 dgUsers.AutoGenerateColumns = false;
+
+
                 List<Users> users = db.UsersRepository.GetAllUsers();
                 List<Users> usersList = new List<Users>();
                 foreach (Users user in users)

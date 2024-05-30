@@ -11,8 +11,9 @@ namespace Accounting.DataLayer.Services
 {
     public class AccountingRepository : IAccountingRepository
     {
+        //for dependency injection making it private!
         private Accounting_DBEntities db;
-
+        
         public AccountingRepository(Accounting_DBEntities context)
         {
             db = context;
