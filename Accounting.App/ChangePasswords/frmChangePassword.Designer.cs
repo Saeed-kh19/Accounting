@@ -37,8 +37,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtNewUsername = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.btnLogin = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnSaveChanges = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.btnShowCurrentPassword = new System.Windows.Forms.PictureBox();
             this.btnShowNewPassword = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.btnShowCurrentPassword)).BeginInit();
@@ -141,33 +141,33 @@
             this.label4.TabIndex = 12;
             this.label4.Text = "New Username";
             // 
-            // btnLogin
+            // btnSaveChanges
             // 
-            this.btnLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(99)))), ((int)(((byte)(237)))));
-            this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogin.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnLogin.Location = new System.Drawing.Point(12, 350);
-            this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(397, 34);
-            this.btnLogin.TabIndex = 16;
-            this.btnLogin.Text = "Save Changes";
-            this.btnLogin.UseVisualStyleBackColor = false;
-            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            this.btnSaveChanges.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(99)))), ((int)(((byte)(237)))));
+            this.btnSaveChanges.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSaveChanges.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSaveChanges.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnSaveChanges.Location = new System.Drawing.Point(12, 350);
+            this.btnSaveChanges.Name = "btnSaveChanges";
+            this.btnSaveChanges.Size = new System.Drawing.Size(397, 34);
+            this.btnSaveChanges.TabIndex = 16;
+            this.btnSaveChanges.Text = "Save Changes";
+            this.btnSaveChanges.UseVisualStyleBackColor = false;
+            this.btnSaveChanges.Click += new System.EventHandler(this.btnSaveChanges_Click);
             // 
-            // button1
+            // btnCancel
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(13, 390);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(396, 34);
-            this.button1.TabIndex = 17;
-            this.button1.Text = "Cancel";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnCancel.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnCancel.Location = new System.Drawing.Point(13, 390);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(396, 34);
+            this.btnCancel.TabIndex = 17;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnShowCurrentPassword
             // 
@@ -205,8 +205,8 @@
             this.ClientSize = new System.Drawing.Size(426, 444);
             this.Controls.Add(this.btnShowNewPassword);
             this.Controls.Add(this.btnShowCurrentPassword);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.btnLogin);
+            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.btnSaveChanges);
             this.Controls.Add(this.txtNewPassword);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtNewUsername);
@@ -222,7 +222,6 @@
             this.Name = "frmChangePassword";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Change Password";
-            this.Load += new System.EventHandler(this.frmChangePassword_Load);
             ((System.ComponentModel.ISupportInitialize)(this.btnShowCurrentPassword)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnShowNewPassword)).EndInit();
             this.ResumeLayout(false);
@@ -241,8 +240,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtNewUsername;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button btnLogin;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnSaveChanges;
+        private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.PictureBox btnShowCurrentPassword;
         private System.Windows.Forms.PictureBox btnShowNewPassword;
     }

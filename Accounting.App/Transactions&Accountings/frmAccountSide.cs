@@ -59,9 +59,13 @@ namespace Accounting.App
             {
                 using (UnitOfWork db = new UnitOfWork())
                 {
+                    //Getting personsId from data grid view table! :))))
                     int personId = int.Parse(dgPersons.CurrentRow.Cells[0].Value.ToString());
+
+                    //Checking if any transactions exists for person or not?
                     bool isTransactionExist = db.TransactionRepository.GetAllTransactions().Where(t => t.PersonID == personId).Any();
                     string name = dgPersons.CurrentRow.Cells[1].Value.ToString();
+
                     if (!isTransactionExist)
                     {   
                         if (MessageBox.Show($"Are you sure you want to delete '{name}'?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)

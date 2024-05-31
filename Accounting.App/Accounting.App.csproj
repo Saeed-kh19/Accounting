@@ -59,6 +59,11 @@
     <Compile Include="AboutUs\frmAboutUs.Designer.cs">
       <DependentUpon>frmAboutUs.cs</DependentUpon>
     </Compile>
+    <Compile Include="Accounting_DBDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Accounting_DBDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -191,6 +196,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="Accounting_DBDataSet.xsc">
+      <DependentUpon>Accounting_DBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Accounting_DBDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Accounting_DBDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Accounting_DBDataSet.xss">
+      <DependentUpon>Accounting_DBDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

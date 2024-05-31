@@ -68,6 +68,7 @@ namespace Accounting.App
             Application.Restart();
         }
 
+
         private void tmrDateAndTime_Tick(object sender, EventArgs e)
         {
             dateTime = DateTime.Now;
@@ -78,6 +79,7 @@ namespace Accounting.App
         private void btnAboutUs_Click(object sender, EventArgs e)
         {
             frmAboutUs frmAboutUs = new frmAboutUs();
+            frmAboutUs.userId = userId;
             frmAboutUs.ShowDialog();
         }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Accounting.DataLayer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +14,8 @@ namespace Accounting.App.AboutUs
     public partial class frmAboutUs : Form
     {
         DateTime dateTime;
+        public int userId;
+
         public frmAboutUs()
         {
             InitializeComponent();
@@ -38,6 +41,13 @@ namespace Accounting.App.AboutUs
         private void btnLogin_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.OK;
+        }
+
+        private void btnSettings_Click(object sender, EventArgs e)
+        {
+            frmAccessDenied frmAccessDenied = new frmAccessDenied();
+            frmAccessDenied.userId = userId;
+            frmAccessDenied.Show();
         }
     }
 }

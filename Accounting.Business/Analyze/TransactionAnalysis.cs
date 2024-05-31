@@ -24,18 +24,24 @@ namespace Accounting.Business
                 var todayIncome = db.TransactionsGenericRepository.Get(t => t.TypeID == 1 && t.DateTime.Day >= today.Day && t.DateTime.Day <= today.Day).Select(a => a.Amount).ToList();
                 var todayOutcome = db.TransactionsGenericRepository.Get(t => t.TypeID == 2 && t.DateTime.Day >= today.Day && t.DateTime.Day <= today.Day).Select(a => a.Amount).ToList();
 
+                //Sum the list of Total incomes!!
                 analyzeView.TotalIncome = (ulong)Totalincome.Sum();
                 analyzeView.TodayIncome = (ulong)todayIncome.Sum();
+
                 if (Totalincome.Count() < 2)
                 {
                     analyzeView.AverageIncome = (ulong)Totalincome.Sum();
                 }
+
                 else
                 {
                     analyzeView.AverageIncome = (ulong)Totalincome.Sum() / (ulong)Totalincome.Count();
                 }
+
+                //Sum the list of Total outcomes!
                 analyzeView.TotalOutcome = (ulong)Totaloutcome.Sum();
                 analyzeView.TodayOutcome = (ulong)todayOutcome.Sum();
+
                 if (Totaloutcome.Count() < 2)
                 {
                     analyzeView.AverageOutcome = (ulong)Totaloutcome.Sum();

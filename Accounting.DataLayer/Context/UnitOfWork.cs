@@ -12,12 +12,13 @@ namespace Accounting.DataLayer.Context
         //IDisposable imports dispose
         //unit of work is a model for dependecy injection
 
-
-        //context
+        //creating context
         Accounting_DBEntities db = new Accounting_DBEntities();
 
+        //for encapsulation we make our variable private and then set value for it in a get method from a public Functions!
         private IAccountingRepository _usersRepository;
 
+        //Creating a property as repository for Users
         public IAccountingRepository UsersRepository
         {
             get
@@ -32,6 +33,8 @@ namespace Accounting.DataLayer.Context
         }
 
         private IAccountingRepository _accountingRepository;
+
+        //Creating a property as repository for Accounting
         public IAccountingRepository AccountingRepository
         {
             get
@@ -45,6 +48,8 @@ namespace Accounting.DataLayer.Context
         }
 
         private IAccountingRepository _transactionRepository;
+
+        //Creating a property as repository for Transactions!
         public IAccountingRepository TransactionRepository
         {
             get
@@ -58,6 +63,8 @@ namespace Accounting.DataLayer.Context
         }
 
         public IAccountingRepository _loginRepository;
+
+        //Creating a property as repository for Logins!
         public IAccountingRepository LoginRepository
         {
             get
@@ -71,6 +78,8 @@ namespace Accounting.DataLayer.Context
         }
 
         private GenericRepository<Users> _loginGenericRepository;
+
+        //Creating a GenericRepository for Logins ( it acts like LoginRepository but with generics! :)))) )
         public GenericRepository<Users> LoginGenericRepository
         {
             get
@@ -84,6 +93,8 @@ namespace Accounting.DataLayer.Context
         }
 
         private GenericRepository<Transactions> _transactionsGenericRepository;
+
+        //Creating a GenericRepository for Transactions ( it acts like TransactionsRepository but with generics! :)))) )
         public GenericRepository<Transactions> TransactionsGenericRepository
         {
             get
@@ -96,11 +107,13 @@ namespace Accounting.DataLayer.Context
             }
         }
 
-        //clear memroy dedicated to context
+        //clear memory dedicated to context
         public void Dispose()
         {
             db.Dispose();
         }
+
+        //Save changes in database! :)
         public void Save()
         {
             db.SaveChanges();

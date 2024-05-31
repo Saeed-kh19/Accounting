@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlTypes;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -18,37 +19,6 @@ namespace Accounting.App
         public frmChangePassword()
         {
             InitializeComponent();
-        }
-
-        private void frmChangePassword_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            DialogResult = DialogResult.Cancel;
-        }
-
-        private void btnLogin_Click(object sender, EventArgs e)
-        {
-            using (UnitOfWork db = new UnitOfWork())
-            {
-                if (db.LoginGenericRepository.Get(l => l.Username == txtCurrentUsername.Text && l.Password == txtCurrentPassword.Text).Any())
-                {
-                    var login = db.LoginGenericRepository.Get().First();
-                    login.Username = txtNewUsername.Text;
-                    login.Password = txtNewPassword.Text;
-                    db.LoginGenericRepository.Update(login);
-                    db.Save();
-                    MessageBox.Show("Credentials Edited Successfuly!", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    DialogResult = DialogResult.OK;
-                }
-                else
-                {
-                    MessageBox.Show("Current Username or Password is incorrect!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
         }
 
         private void btnShowCurrentPassword_Click_1(object sender, EventArgs e)
@@ -95,6 +65,32 @@ namespace Accounting.App
         private void btnShowNewPassword_MouseLeave(object sender, EventArgs e)
         {
             btnShowNewPassword.BackColor = SystemColors.ScrollBar;
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+        }
+
+        private void btnSaveChanges_Click(object sender, EventArgs e)
+        {
+            using (UnitOfWork db = new UnitOfWork())
+            {
+                if (db.LoginGenericRepository.Get(l => l.Username == txtCurrentUsername.Text && l.Password == txtCurrentPassword.Text).Any())
+                {
+                    var login = db.LoginGenericRepository.Get(x => x.Username == txtCurrentUsername.Text && x.Password == txtCurrentPassword.Text).First();
+                    login.Username = txtNewUsername.Text;
+                    login.Password = txtNewPassword.Text;
+                    db.LoginGenericRepository.Update(login);
+                    db.Save();
+                    MessageBox.Show("Credentials Edited Successfuly!", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    DialogResult = DialogResult.OK;
+                }
+                else
+                {
+                    MessageBox.Show("Current Username or Password is incorrect!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }

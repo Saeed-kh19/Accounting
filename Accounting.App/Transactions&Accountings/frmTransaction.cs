@@ -63,7 +63,6 @@ namespace Accounting.App
                             else if (newTransaction.TypeID == 2)
                             {
                                 rbPay.Checked = true;
-                                rbPay.Checked = true;
                             }
                             dgPersons.Enabled = false;
                             listOfPersons.Add(db.TransactionRepository.GetPersonById(newTransaction.PersonID));
